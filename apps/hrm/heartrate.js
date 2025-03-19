@@ -40,7 +40,7 @@ Bangle.on('HRM', onHRM);
 
 function updateHrm(){
   
-  hrHistory = [..hrHistory, hrmInfo.bpm]
+  hrHistory = [..hrHistory, parseInt(hrmInfo.bpm)]
   maxHrHistory = Math.max(hrHistory)
   minHrHistory = Math.min(hrHistory)
 
@@ -58,6 +58,9 @@ function updateHrm(){
   //py += g.stringHeight(str)/2;
   g.setFont("6x8").setColor(g.theme.fg);
   g.drawString(/*LANG*/"BPM",px+25,py);
+
+  g.drawString(min.toString(),px-25, g.getHeight()-30)
+  g.drawString(max.toString(),px+25, g.getHeight()-30)
 }
 
 var rawMax = 0;
