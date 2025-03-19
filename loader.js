@@ -112,6 +112,7 @@ window.addEventListener('load', (event) => {
   let deviceId = getSavedDeviceId()
   if (deviceId !== undefined) return; // already chosen
 
+  /*
   var html = `<div class="columns">
     ${DEVICEINFO.map(d=>`
     <div class="column col-6 col-xs-6">
@@ -149,6 +150,9 @@ window.addEventListener('load', (event) => {
       filterAppsForDevice(deviceId);
     });
   });
+  */
+  setSavedDeviceId("BANGLEJS2");
+
 });
 
 window.addEventListener('load', (event) => {
