@@ -45,11 +45,11 @@
 
 
     <ul class="tab tab-block" id="tab-navigate">
-      <li class="tab-item active" id="tab-myappscontainer">
-        <a href="javascript:showTab('myappscontainer')">My Apps</a>
-      </li>
       <li class="tab-item" id="tab-librarycontainer">
         <a href="javascript:showTab('librarycontainer')">Library</a>
+      </li>
+      <li class="tab-item active" id="tab-myappscontainer">
+        <a href="javascript:showTab('myappscontainer')">My Apps</a>
       </li>
       <li class="tab-item" id="tab-morecontainer">
         <a href="javascript:showTab('morecontainer')">More...</a>
@@ -59,17 +59,7 @@
     <div class="container"  id="toastcontainer">
     </div>
 
-    <div class="container apploader-tab" id="myappscontainer" style="display:none">
-      <div class="panel">
-        <div class="panel-header" style="text-align:right">
-          <button id="refreshButton" class="btn refresh">Refresh...</button>
-          <button class="btn btn-primary updateapps hidden">Update X apps</button>
-        </div>
-        <div class="panel-body columns"><!-- apps go here --></div>
-      </div>
-    </div>
-
-    <div class="container apploader-tab" id="librarycontainer">
+    <div class="container apploader-tab" id="librarycontainer"  style="display:none">
       <div class="dropdown-container">
         <div class="dropdown devicetype-nav">
           <a href="#" class="btn btn-link dropdown-toggle" tabindex="0">
@@ -117,6 +107,18 @@
         <div class="panel-body columns"><!-- apps go here --></div>
       </div>
     </div>
+
+    <div class="container apploader-tab" id="myappscontainer">
+      <div class="panel">
+        <div class="panel-header" style="text-align:right">
+          <button id="refreshButton" class="btn refresh">Refresh...</button>
+          <button class="btn btn-primary updateapps hidden">Update X apps</button>
+        </div>
+        <div class="panel-body columns"><!-- apps go here --></div>
+      </div>
+    </div>
+
+
 
     <div class="container apploader-tab" id="morecontainer" style="display:none">
       <div class="hero bg-gray">
