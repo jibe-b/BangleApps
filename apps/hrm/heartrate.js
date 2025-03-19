@@ -43,8 +43,9 @@ function updateHrm(){
 
   g.setFontAlign(0,0);
   var str = hrmInfo.bpm || "";
-  var py = 80;//g.getHeight()/2;
-  g.setFontVector(60).setColor(hrmInfo.confidence > 50 ? g.theme.fg : "#888").drawString(str,px,py);
+  var fontSize = 60;
+  var py = g.getHeight()/2 - fontSize/2;
+  g.setFontVector(fontSize).setColor(hrmInfo.confidence > 50 ? g.theme.fg : "#888").drawString(str,px,py);
   px += g.stringWidth(str)/2;
   //py += g.stringHeight(str)/2;
   g.setFont("6x8").setColor(g.theme.fg);
