@@ -46,8 +46,9 @@ function updateHrm(){
   var py = 80;//g.getHeight()/2;
   g.setFontVector(60).setColor(hrmInfo.confidence > 50 ? g.theme.fg : "#888").drawString(str,px,py);
   px += g.stringWidth(str)/2;
+  py += g.stringHeight(str)/2;
   g.setFont("6x8").setColor(g.theme.fg);
-  g.drawString(/*LANG*/"BPM",px+15,py);
+  g.drawString(/*LANG*/"BPM",px+25,py);
 }
 
 function updateScale(){
