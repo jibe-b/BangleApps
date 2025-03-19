@@ -43,10 +43,11 @@ function updateHrm(){
 
   g.setFontAlign(0,0);
   var str = hrmInfo.bpm || "--";
-  g.setFontVector(40).setColor(hrmInfo.confidence > 50 ? g.theme.fg : "#888").drawString(str,px,45);
+  var py = 55;
+  g.setFontVector(40).setColor(hrmInfo.confidence > 50 ? g.theme.fg : "#888").drawString(str,px,py);
   px += g.stringWidth(str)/2;
   g.setFont("6x8").setColor(g.theme.fg);
-  g.drawString(/*LANG*/"bpm",px+15,45);
+  g.drawString(/*LANG*/"bpm",px+15,py);
 }
 
 function updateScale(){
