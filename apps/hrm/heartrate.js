@@ -4,10 +4,15 @@ if (process.env.HWVERSION == 1) {
 }
 
 Bangle.setHRMPower(1);
-var hrmInfo = {}, hrmOffset = 0;
+var hrmInfo = {}
+var hrmOffset = 0;
 var hrmInterval;
 var btm = g.getHeight()-1;
 var lastHrmPt = []; // last xy coords we draw a line to
+
+var hrHistory = [];
+var maxHrHistory;
+var minHrHistory;
 
 function onHRM(h) {
   if (counter!==undefined) {
@@ -34,6 +39,11 @@ function onHRM(h) {
 Bangle.on('HRM', onHRM);
 
 function updateHrm(){
+  
+  hrHistory = [..hrHistory, hrmInfo.bpm]
+  maxHrHistory = Math.max(hrHistory)
+  minHrHistory = Math.min(hrHistory)
+
   var px = g.getWidth()/2;
   g.setFontAlign(0,-1);
   g.clearRect(0,0,g.getWidth(),g.getHeight());
