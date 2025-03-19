@@ -53,12 +53,12 @@ var mean = (array) => {
 };
 
 var min = (array) => {
-  var sorted_array = hrHistory.sort((a, b) => a - b)
+  var sorted_array = array.sort((a, b) => a - b)
   return sorted_array[0]
 }
 
 var max = (array) => {
-  var sorted_array = hrHistory.sort((a, b) => b - a)
+  var sorted_array = array.sort((a, b) => b - a)
   return sorted_array[0]
 }
 
@@ -114,9 +114,11 @@ function updateHrm() {
     var maxHrHistory = max(hrHistory)
 
     g.setFontVector(15)
-    g.drawString(meanHrHistory.toString(), g.getWidth() / 2 - 50, g.getHeight() - 30)
-    g.drawString(minHrHistory.toString(), g.getWidth() / 2 + 0, g.getHeight() - 17)
-    g.drawString(maxHrHistory.toString(), g.getWidth() / 2 + 50, g.getHeight() - 2)
+    g.drawString(meanHrHistory.toString(), g.getWidth() / 2 - 30, g.getHeight() - 30)
+
+    g.drawString(maxHrHistory.toString(), g.getWidth() / 2 - 60, g.getHeight() - 40)
+    g.drawString(minHrHistory.toString(), g.getWidth() / 2 - 60, g.getHeight() - 20)
+    
   }
 }
 
