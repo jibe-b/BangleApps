@@ -65,9 +65,9 @@ function updateHrm() {
 
   hrHistory = [50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150]
 
-  //meanHrHistory = 51 //mean(hrHistory)
-  //maxHrHistory = Math.max(...hrHistory)
-  //minHrHistory = Math.min(...hrHistory)
+  meanHrHistory = 51 //mean(hrHistory)
+  maxHrHistory = Math.max(...hrHistory)
+  minHrHistory = Math.min(...hrHistory)
 
   var px = g.getWidth() / 2;
   g.setFontAlign(0, -1);
@@ -91,9 +91,9 @@ function updateHrm() {
 
   g.drawString(/*LANG*/"BPM", px + 25, py);
 
-  //g.drawString(meanHrHistory.toString(), g.getWidth() - 50, g.getHeight() - 30)
-  //g.drawString(minHrHistory.toString(), g.getWidth() - 25, g.getHeight() - 30)
-  //g.drawString(maxHrHistory.toString(), g.getWidth() + 25, g.getHeight() - 30)
+  g.drawString(meanHrHistory.toString(), g.getWidth()/2 - 50, g.getHeight() - 30)
+  g.drawString(minHrHistory.toString(), g.getWidth()/2 - 25, g.getHeight() - 30)
+  g.drawString(maxHrHistory.toString(), g.getWidth()/2 + 25, g.getHeight() - 30)
 }
 
 var rawMax = 0;
