@@ -19,7 +19,7 @@ function onHRM(h) {
     // the first time we're called remove
     // the countdown
     counter = undefined;
-    g.clearRect(0,0,g.getWidth(),g.getHeight());
+    g.clearRect(0,24,g.getWidth(),g.getHeight());
   }
   hrmInfo = h;
   /* On 2v09 and earlier firmwares the only solution for realtime
@@ -46,7 +46,7 @@ function updateHrm(){
 
   var px = g.getWidth()/2;
   g.setFontAlign(0,-1);
-  g.clearRect(0,0,g.getWidth(),g.getHeight());
+  g.clearRect(0,24,g.getWidth(),g.getHeight());
   //g.setFont("6x8").drawString(/*LANG*/"Confidence "+(hrmInfo.confidence || "--")+"%", px, 70);
 
   g.setFontAlign(0,0);
@@ -74,7 +74,7 @@ Bangle.on('HRM-raw', function(v) {
     let thousands = Math.round(rawMax / 1000) * 1000;
     if (thousands > scale) scale = thousands;
 
-    g.clearRect(0,0,g.getWidth(),g.getHeight());
+    g.clearRect(0,24,g.getWidth(),g.getHeight());
 
     hrmOffset=0;
     lastHrmPt = [-100,0];
@@ -89,7 +89,7 @@ Bangle.on('HRM-raw', function(v) {
   lastHrmPt = [hrmOffset, y];
   if (counter !==undefined) {
     counter = undefined;
-    g.clearRect(0,0,g.getWidth(),g.getHeight());
+    g.clearRect(0,24,g.getWidth(),g.getHeight());
     updateHrm();
   }
 });
@@ -121,7 +121,7 @@ function readHRM() {
   if (!hrmInfo) return;
 
   if (hrmOffset==0) {
-    g.clearRect(0,0,g.getWidth(),g.getHeight());
+    g.clearRect(0,24,g.getWidth(),g.getHeight());
     lastHrmPt = [-100,0];
   }
   for (var i=0;i<2;i++) {
