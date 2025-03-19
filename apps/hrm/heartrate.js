@@ -62,6 +62,7 @@ function updateHrm(){
   g.setFont("6x8").setColor(g.theme.fg);
   g.drawString(/*LANG*/"BPM",px+25,py);
 
+  g.drawString(meanHrHistory.toString(),px-50, g.getHeight()-30)
   //g.drawString(min.toString(),px-25, g.getHeight()-30)
   //g.drawString(max.toString(),px+25, g.getHeight()-30)
 }

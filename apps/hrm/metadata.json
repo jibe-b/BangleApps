@@ -1,7 +1,7 @@
 {
   "id": "hrm",
   "name": "Heart Rate Monitor",
-  "version": "10.44",
+  "version": "10.45",
   "description": "Measure your heart rate and see live sensor data",
   "icon": "heartrate.png",
   "type": "clock",
@@ -10,5 +10,6 @@
   "storage": [
     {"name":"hrm.app.js","url":"heartrate.js"},
     {"name":"hrm.img","url":"heartrate-icon.js","evaluate":true}
-  ]
+  ],
+  "data" : [{"name": "hrHistory.json","storageFile":true}]
 }
