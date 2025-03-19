@@ -173,8 +173,8 @@ Bangle.setUI({
     //if (drawTimeout) clearTimeout(drawTimeout);
     //drawTimeout = undefined;
     //delete Graphics.prototype.setFontAnton;
-    Bangle.on('HRM', ()=>{})
-    Bangle.on('HRM-raw', ()=>{})
+    Bangle.removeListener('HRM', ()=>{})
+    Bangle.removeListener('HRM-raw', ()=>{})
     g.clearRect(0, 24, g.getWidth(), g.getHeight());
     delete hrmInfo
   }});
