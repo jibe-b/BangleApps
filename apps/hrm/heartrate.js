@@ -37,7 +37,7 @@ function updateHrm(){
   var px = g.getWidth()/2;
   g.setFontAlign(0,-1);
   g.clearRect(0,24,g.getWidth(),80);
-  g.setFont("6x8").drawString(/*LANG*/"Confidence "+(hrmInfo.confidence || "--")+"%", px, 70);
+  //g.setFont("6x8").drawString(/*LANG*/"Confidence "+(hrmInfo.confidence || "--")+"%", px, 70);
 
   updateScale();
 
@@ -76,9 +76,9 @@ Bangle.on('HRM-raw', function(v) {
     rawMax = v.raw;
   }
   let y = E.clip(btm-(8+v.filt/3000),btm-24,btm);
-  g.setColor(1,0,0).fillRect(hrmOffset,btm, hrmOffset, y);
+  //g.setColor(1,0,0).fillRect(hrmOffset,btm, hrmOffset, y);
   y = E.clip(btm - (v.raw/scale*84),84,btm);
-  g.setColor(g.theme.fg).drawLine(lastHrmPt[0],lastHrmPt[1],hrmOffset, y);
+  //g.setColor(g.theme.fg).drawLine(lastHrmPt[0],lastHrmPt[1],hrmOffset, y);
   lastHrmPt = [hrmOffset, y];
   if (counter !==undefined) {
     counter = undefined;
