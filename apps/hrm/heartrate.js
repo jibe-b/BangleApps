@@ -110,7 +110,7 @@ function updateHrm() {
   g.drawString(/*LANG*/"BPM", px + 25, py);
 
   if (hrHistory.length > 0) {
-    var meanHrHistory = Math.trunc(mean(hrHistory))
+    var meanHrHistory = mean(hrHistory) // Math.trunc(
     var minHrHistory = min(hrHistory)
     var maxHrHistory = max(hrHistory)
 
