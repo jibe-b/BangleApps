@@ -91,9 +91,9 @@ function updateHrm() {
 
   g.drawString(/*LANG*/"BPM", px + 25, py);
 
-  g.drawString(meanHrHistory.toString(), g.getWidth()/2 - 50, g.getHeight() - 30)
-  g.drawString(minHrHistory.toString(), g.getWidth()/2 - 25, g.getHeight() - 30)
-  g.drawString(maxHrHistory.toString(), g.getWidth()/2 + 25, g.getHeight() - 30)
+  //g.drawString(meanHrHistory.toString(), g.getWidth()/2 - 50, g.getHeight() - 30)
+  //g.drawString(minHrHistory.toString(), g.getWidth()/2 - 25, g.getHeight() - 30)
+  //g.drawString(maxHrHistory.toString(), g.getWidth()/2 + 25, g.getHeight() - 30)
 }
 
 var rawMax = 0;
