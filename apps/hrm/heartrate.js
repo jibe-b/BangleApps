@@ -43,7 +43,7 @@ function updateHrm(){
 
   g.setFontAlign(0,0);
   var str = hrmInfo.bpm || "--";
-  var py = 55;
+  var py = 100;
   g.setFontVector(40).setColor(hrmInfo.confidence > 50 ? g.theme.fg : "#888").drawString(str,px,py);
   px += g.stringWidth(str)/2;
   g.setFont("6x8").setColor(g.theme.fg);
