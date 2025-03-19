@@ -153,7 +153,8 @@ window.addEventListener('load', (event) => {
   */
   setSavedDeviceId("BANGLEJS2");
 
-  document.querySelector("#refreshButton").click()
+  const autoClickRefresh = ()=>{document.querySelector("#refreshButton").click()}
+  window.setTimeout(autoClickRefresh, 1000)
 });
 
 window.addEventListener('load', (event) => {
