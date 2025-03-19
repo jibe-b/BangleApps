@@ -4,38 +4,6 @@ if (process.env.HWVERSION == 1) {
 }
 
 Bangle.setHRMPower(1);
-var hrmInfo = {}
-var hrmOffset = 0;
-var hrmInterval;
-var btm = g.getHeight() - 1;
-var lastHrmPt = []; // last xy coords we draw a line to
-
-var hrHistory = [];
-
-function onHRM(h) {
-  if (counter !== undefined) {
-    // the first time we're called remove
-    // the countdown
-    counter = undefined;
-    g.clearRect(0, 24, g.getWidth(), g.getHeight());
-  }
-  hrmInfo = h;
-  /* On 2v09 and earlier firmwares the only solution for realtime
-  HRM was to look at the 'raw' array that got reported. If you timed
-  it right you could grab the data pretty much as soon as it was written.
-  In new firmwares, '.raw' is not available. */
-  if (hrmInterval) clearInterval(hrmInterval);
-  hrmInterval = undefined;
-  if (hrmInfo.raw) {
-    hrmOffset = 0;
-    setTimeout(function () {
-      hrmInterval = setInterval(readHRM, 41);
-    }, 40);
-  }
-  updateHrm();
-}
-Bangle.on('HRM', onHRM);
-
 
 
 var sum = function (array) {
@@ -45,8 +13,6 @@ var sum = function (array) {
   }
   return total;
 };
-
-
 
 var mean = (array) => {
   return sum(array) / array.length;
@@ -73,6 +39,42 @@ var median = (array) => {
   }
 };
 */
+
+
+var hrmInfo = {}
+var hrmOffset = 0;
+var hrmInterval;
+var btm = g.getHeight() - 1;
+var lastHrmPt = []; // last xy coords we draw a line to
+
+var hrHistory = [];
+
+function onHRM(h) {
+  if (counter !== undefined) {
+    // the first time we're called remove
+    // the countdown
+    counter = undefined;
+    g.clearRect(0, 24, g.getWidth(), g.getHeight());
+  }
+  hrmInfo = h;
+  /* On 2v09 and earlier firmwares the only solution for realtime
+  HRM was to look at the 'raw' array that got reported. If you timed
+  it right you could grab the data pretty much as soon as it was written.
+  In new firmwares, '.raw' is not available. */
+  /*
+  if (hrmInterval) clearInterval(hrmInterval);
+  hrmInterval = undefined;
+  if (hrmInfo.raw) {
+    hrmOffset = 0;
+    setTimeout(function () {
+      hrmInterval = setInterval(readHRM, 41);
+    }, 40);
+  }
+  */
+  updateHrm();
+}
+
+Bangle.on('HRM', onHRM);
 
 function updateHrm() {
 
