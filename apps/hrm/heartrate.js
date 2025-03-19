@@ -46,7 +46,7 @@ function updateHrm(){
   g.setFontVector(40).setColor(hrmInfo.confidence > 50 ? g.theme.fg : "#888").drawString(str,px,45);
   px += g.stringWidth(str)/2;
   g.setFont("6x8").setColor(g.theme.fg);
-  g.drawString(/*LANG*/"BPM",px+15,45);
+  g.drawString(/*LANG*/"bpm",px+15,45);
 }
 
 function updateScale(){
