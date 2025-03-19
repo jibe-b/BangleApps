@@ -38,9 +38,9 @@ Bangle.on('HRM', onHRM);
 
 
 
-var sum = function(array) {
+var sum = function (array) {
   var total = 0;
-  for (var i=0; i<array.length; i++) {
+  for (var i = 0; i < array.length; i++) {
     total += array[i];
   }
   return total;
@@ -48,7 +48,7 @@ var sum = function(array) {
 
 
 
-var  mean = (array) => {
+var mean = (array) => {
   return sum(array) / array.length;
 };
 
@@ -76,17 +76,10 @@ var median = (array) => {
 
 function updateHrm() {
 
-  /*
-  if (hrmInfo.bpm !== undefined ) {
-    hrHistory = [...hrHistory, parseInt(hrmInfo.bpm)]
+  if (hrmInfo.bpm) {
+    hrHistory = hrHistory.concat([hrmInfo.bpm])
   }
-  */
 
-  hrHistory = [50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150]
-
-  var meanHrHistory = mean(hrHistory)
-  var minHrHistory = min(hrHistory)
-  var maxHrHistory = max(hrHistory)
 
   var px = g.getWidth() / 2;
   g.setFontAlign(0, -1);
@@ -110,9 +103,15 @@ function updateHrm() {
 
   g.drawString(/*LANG*/"BPM", px + 25, py);
 
-  g.drawString(meanHrHistory.toString(), g.getWidth()/2 - 50, g.getHeight() - 30)
-  g.drawString(minHrHistory.toString(), g.getWidth()/2 - 25, g.getHeight() - 30)
-  g.drawString(maxHrHistory.toString(), g.getWidth()/2 + 25, g.getHeight() - 30)
+  if (hrHistory.length > 0) {
+    var meanHrHistory = mean(hrHistory)
+    var minHrHistory = min(hrHistory)
+    var maxHrHistory = max(hrHistory)
+
+    g.drawString(meanHrHistory.toString(), g.getWidth() / 2 - 50, g.getHeight() - 30)
+    g.drawString(minHrHistory.toString(), g.getWidth() / 2 - 25, g.getHeight() - 30)
+    g.drawString(maxHrHistory.toString(), g.getWidth() / 2 + 25, g.getHeight() - 30)
+  }
 }
 
 var rawMax = 0;
