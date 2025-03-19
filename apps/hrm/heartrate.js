@@ -42,7 +42,7 @@ function updateHrm(){
   updateScale();
 
   g.setFontAlign(0,0);
-  var str = hrmInfo.bpm || "--";
+  var str = hrmInfo.bpm || "";
   var py = 100;
   g.setFontVector(60).setColor(hrmInfo.confidence > 50 ? g.theme.fg : "#888").drawString(str,px,py);
   px += g.stringWidth(str)/2;
