@@ -39,6 +39,10 @@ function onHRM(h) {
 }
 Bangle.on('HRM', onHRM);
 
+const mean = (array) => {
+  return sum(array) / array.length;
+};
+
 function updateHrm() {
 
   /*
@@ -49,7 +53,7 @@ function updateHrm() {
 
   hrHistory = [50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150]
 
-  meanHrHistory = hrHistory[0]
+  meanHrHistory = mean(hrHistory)
   maxHrHistory = Math.max(hrHistory)
   minHrHistory = Math.min(hrHistory)
 
@@ -76,8 +80,8 @@ function updateHrm() {
   g.drawString(/*LANG*/"BPM", px + 25, py);
 
   g.drawString(meanHrHistory.toString(), px - 50, g.getHeight() - 30)
-  g.drawString(min.toString(),px-25, g.getHeight()-30)
-  g.drawString(max.toString(),px+25, g.getHeight()-30)
+  g.drawString(minHrHistory.toString(),px-25, g.getHeight()-30)
+  g.drawString(maxHrHistory.toString(),px+25, g.getHeight()-30)
 }
 
 var rawMax = 0;
