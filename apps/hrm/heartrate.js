@@ -44,7 +44,7 @@ function updateHrm(){
   g.setFontAlign(0,0);
   var str = hrmInfo.bpm || "";
   var fontSize = 60;
-  var py = g.getHeight()/2 - fontSize/2;
+  var py = g.getHeight()/2;
   g.setFontVector(fontSize).setColor(hrmInfo.confidence > 50 ? g.theme.fg : "#888").drawString(str,px,py);
   px += g.stringWidth(str)/2;
   //py += g.stringHeight(str)/2;
