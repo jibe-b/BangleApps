@@ -64,7 +64,7 @@ function onFoundDeviceInfo(deviceId, deviceVersion) {
 function onRefreshMyApps() {
   /* if we're allowed to, send usage stats. We'll only
   actually send if the data has changed */
-  sendUsageStats();
+  //sendUsageStats();
 }
 
 var submittedUsageInfo = "";
