@@ -114,6 +114,7 @@ function updateHrm() {
     var minHrHistory = min(hrHistory)
     var maxHrHistory = max(hrHistory)
 
+    g.setFontVector(30)
     g.drawString(meanHrHistory.toString(), g.getWidth() / 2 - 50, g.getHeight() - 30)
     g.drawString(minHrHistory.toString(), g.getWidth() / 2 - 25, g.getHeight() - 30)
     g.drawString(maxHrHistory.toString(), g.getWidth() / 2 + 25, g.getHeight() - 30)
