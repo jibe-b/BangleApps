@@ -22,7 +22,7 @@
     g.drawImage(atob("GBgBAAAAAAAAAAAAAAAAAH4AAf+AB4HgDgBwHDw4OH4cMOcMYMMGYMMGMOcMOH4cHDw4DgBwB4HgAf+AAH4AAAAAAAAAAAAAAAAA"),this.x,this.y);
   }
 
-  WIDGETS["viz"] ={area:"tl", width:24,draw:draw};
+  //WIDGETS["viz"] ={area:"tl", width:0,draw:draw};
 
   Bangle.on('swipe',(dir)=>{
     if (dir<0) hide(); else reveal();
