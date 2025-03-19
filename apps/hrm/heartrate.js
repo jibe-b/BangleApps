@@ -67,7 +67,7 @@ function updateHrm() {
 
   meanHrHistory = 51 //mean(hrHistory)
   maxHrHistory = Math.max(...hrHistory)
-  minHrHistory = Math.min(...hrHistory)
+  //minHrHistory = Math.min(...hrHistory)
 
   var px = g.getWidth() / 2;
   g.setFontAlign(0, -1);
