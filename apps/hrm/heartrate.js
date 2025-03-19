@@ -83,7 +83,7 @@ function updateHrm() {
   
   var maxHistoryLength = 60 / 2
   if (hrHistory.length > maxHistoryLength){
-    hrHistory = maxHistoryLength.splice(-maxHistoryLength)
+    hrHistory = hrHistory.splice(-maxHistoryLength)
   }
 
   var px = g.getWidth() / 2;
@@ -113,10 +113,10 @@ function updateHrm() {
     var minHrHistory = min(hrHistory)
     var maxHrHistory = max(hrHistory)
 
-    g.setFontVector(30)
+    g.setFontVector(15)
     g.drawString(meanHrHistory.toString(), g.getWidth() / 2 - 50, g.getHeight() - 30)
-    g.drawString(minHrHistory.toString(), g.getWidth() / 2 - 25, g.getHeight() - 30)
-    g.drawString(maxHrHistory.toString(), g.getWidth() / 2 + 25, g.getHeight() - 30)
+    g.drawString(minHrHistory.toString(), g.getWidth() / 2 + 0, g.getHeight() - 17)
+    g.drawString(maxHrHistory.toString(), g.getWidth() / 2 + 50, g.getHeight() - 2)
   }
 }
 
