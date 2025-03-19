@@ -1,0 +1,15 @@
+{
+  "id": "hrmActivities",
+  "name": "Heart Rate Monitor",
+  "version": "10.77",
+  "description": "Measure your heart rate and see live sensor data",
+  "icon": "heartrate.png",
+  "type": "clock",
+  "tags": "clock",
+  "supports": ["BANGLEJS2"],
+  "storage": [
+    {"name":"hrmActivities.app.js","url":"heartrate.js"},
+    {"name":"hrmActivities.img","url":"heartrate-icon.js","evaluate":true}
+  ],
+  "data" : [{"name": "hrHistory.json","storageFile":true}]
+}
