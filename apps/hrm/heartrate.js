@@ -13,6 +13,7 @@ var lastHrmPt = []; // last xy coords we draw a line to
 var hrHistory = [];
 var maxHrHistory;
 var minHrHistory;
+var meanHrHistory;
 
 function onHRM(h) {
   if (counter!==undefined) {
@@ -40,7 +41,9 @@ Bangle.on('HRM', onHRM);
 
 function updateHrm(){
   
-  //hrHistory = [...hrHistory, parseInt(hrmInfo.bpm || 80)]
+  hrHistory =  [82]// [...hrHistory, parseInt(hrmInfo.bpm || 80)]
+
+  meanHrHistory = hrHistory[0]
   //maxHrHistory = Math.max(hrHistory)
   //minHrHistory = Math.min(hrHistory)
 
