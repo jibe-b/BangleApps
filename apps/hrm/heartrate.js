@@ -39,9 +39,21 @@ function onHRM(h) {
 }
 Bangle.on('HRM', onHRM);
 
+/*
 const mean = (array) => {
   return sum(array) / array.length;
 };
+
+const median = (array) => {
+  array = array.sort();
+  if (array.length % 2 === 0) { // array with even number elements
+    return (array[array.length/2] + array[(array.length / 2) - 1]) / 2;
+  }
+  else {
+    return array[(array.length - 1) / 2]; // array with odd number elements
+  }
+};
+*/
 
 function updateHrm() {
 
@@ -53,7 +65,7 @@ function updateHrm() {
 
   hrHistory = [50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150]
 
-  meanHrHistory = mean(hrHistory)
+  meanHrHistory = 51 //mean(hrHistory)
   maxHrHistory = Math.max(hrHistory)
   minHrHistory = Math.min(hrHistory)
 
