@@ -79,12 +79,13 @@ function updateHrm() {
   if (hrmInfo.bpm) {
     hrHistory = hrHistory.concat([hrmInfo.bpm])
   }
-
   
+  /*
   var maxHistoryLength = 60*60
   if (hrHistory.length > maxHistoryLength){
     hrHistory = maxHistoryLength.splice(-maxHistoryLength)
   }
+  */
 
   var px = g.getWidth() / 2;
   g.setFontAlign(0, -1);
