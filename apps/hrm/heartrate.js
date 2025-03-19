@@ -44,15 +44,15 @@ function updateHrm(){
   g.setFontAlign(0,0);
   var str = hrmInfo.bpm || "--";
   var py = 100;
-  g.setFontVector(40).setColor(hrmInfo.confidence > 50 ? g.theme.fg : "#888").drawString(str,px,py);
+  g.setFontVector(40).setColor(hrmInfo.confidence > 50 ? g.theme.fg : "#888").drawString(str,px,45);
   px += g.stringWidth(str)/2;
   g.setFont("6x8").setColor(g.theme.fg);
-  g.drawString(/*LANG*/"bpm",px+15,py);
+  g.drawString(/*LANG*/"bpm",px+15,45);
 }
 
 function updateScale(){
     g.setFontAlign(-1,-1);
-    g.clearRect(2,70,40,78);
+    g.clearRect(2,70,140,178);
     //g.setFont("6x8").drawString(scale, 2, 70);
 }
 
