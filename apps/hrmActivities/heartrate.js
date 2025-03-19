@@ -129,7 +129,7 @@ var scale = 2000;
 //var MID = (g.getHeight()+80)/2;
 /* On newer (2v10) firmwares we can subscribe to get
 HRM events as they happen */
-Bangle.on('HRM-raw', function (v) {
+Bangle.on('HRM-raw', function (heartRate) {
   hrmOffset++;
   if (hrmOffset > g.getWidth()) {
     let thousands = Math.round(rawMax / 1000) * 1000;
@@ -140,12 +140,12 @@ Bangle.on('HRM-raw', function (v) {
     hrmOffset = 0;
     lastHrmPt = [-100, 0];
   }
-  if (rawMax < v.raw) {
-    rawMax = v.raw;
+  if (rawMax < heartRate.raw) {
+    rawMax = heartRate.raw;
   }
-  let y = E.clip(btm - (8 + v.filt / 3000), btm - 24, btm);
+  let y = E.clip(btm - (8 + heartRate.filt / 3000), btm - 24, btm);
   //g.setColor(1,0,0).fillRect(hrmOffset,btm, hrmOffset, y);
-  y = E.clip(btm - (v.raw / scale * 84), 84, btm);
+  y = E.clip(btm - (heartRate.raw / scale * 84), 84, btm);
   //g.setColor(g.theme.fg).drawLine(lastHrmPt[0],lastHrmPt[1],hrmOffset, y);
   lastHrmPt = [hrmOffset, y];
   if (counter !== undefined) {
@@ -173,6 +173,8 @@ Bangle.setUI({
     //if (drawTimeout) clearTimeout(drawTimeout);
     //drawTimeout = undefined;
     //delete Graphics.prototype.setFontAnton;
+    Bangle.on('HRM', ()=>{})
+    Bangle.on('HRM-raw', ()=>{})
     g.clearRect(0, 24, g.getWidth(), g.getHeight());
     delete hrmInfo
   }});
