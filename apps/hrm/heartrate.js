@@ -100,7 +100,7 @@ Bangle.loadWidgets();
 Bangle.drawWidgets();
 g.setColor(g.theme.fg);
 g.reset().setFont("6x8",2).setFontAlign(0,-1);
-g.drawString(/*LANG*/"Please wait...",g.getWidth()/2,g.getHeight()/2 - 16);
+//g.drawString(/*LANG*/"Please wait...",g.getWidth()/2,g.getHeight()/2 - 16);
 countDown();
 
 
