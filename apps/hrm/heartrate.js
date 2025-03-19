@@ -52,7 +52,7 @@ function updateHrm(){
 function updateScale(){
     g.setFontAlign(-1,-1);
     g.clearRect(2,70,40,78);
-    g.setFont("6x8").drawString(scale, 2, 70);
+    //g.setFont("6x8").drawString(scale, 2, 70);
 }
 
 var rawMax = 0;
