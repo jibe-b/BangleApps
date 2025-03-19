@@ -62,8 +62,8 @@ function updateHrm() {
 
   hrHistory = [50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150]
 
-  const meanHrHistory = mean(hrHistory)
-  //const maxHrHistory = Math.max(...hrHistory)
+  //const meanHrHistory = mean(hrHistory)
+  const maxHrHistory = Math.max(...hrHistory)
   //const minHrHistory = Math.min(...hrHistory)
 
   var px = g.getWidth() / 2;
