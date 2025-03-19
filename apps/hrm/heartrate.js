@@ -11,9 +11,6 @@ var btm = g.getHeight() - 1;
 var lastHrmPt = []; // last xy coords we draw a line to
 
 var hrHistory = [];
-var maxHrHistory;
-var minHrHistory;
-var meanHrHistory;
 
 function onHRM(h) {
   if (counter !== undefined) {
@@ -65,9 +62,9 @@ function updateHrm() {
 
   hrHistory = [50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150]
 
-  meanHrHistory = 51 //mean(hrHistory)
-  //maxHrHistory = Math.max(...hrHistory)
-  //minHrHistory = Math.min(...hrHistory)
+  const meanHrHistory = mean(hrHistory)
+  //const maxHrHistory = Math.max(...hrHistory)
+  //const minHrHistory = Math.min(...hrHistory)
 
   var px = g.getWidth() / 2;
   g.setFontAlign(0, -1);
