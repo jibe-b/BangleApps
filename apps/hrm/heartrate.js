@@ -37,9 +37,21 @@ function onHRM(h) {
 Bangle.on('HRM', onHRM);
 
 
+
+var sum = function(array) {
+  var total = 0;
+  for (var i=0; i<array.length; i++) {
+    total += array[i];
+  }
+  return total;
+};
+
+
+
 var  mean = (array) => {
   return sum(array) / array.length;
 };
+
 
 /*
 var median = (array) => {
