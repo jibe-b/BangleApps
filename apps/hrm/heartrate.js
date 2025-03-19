@@ -91,7 +91,7 @@ Bangle.on('HRM-raw', function(v) {
 var counter = 5;
 function countDown() {
   if (counter) {
-    g.drawString(counter--,g.getWidth()/2,g.getHeight()/2, true);
+    //g.drawString(counter--,g.getWidth()/2,g.getHeight()/2, true);
     setTimeout(countDown, 1000);
   }
 }
@@ -120,7 +120,7 @@ function readHRM() {
     var a = hrmInfo.raw[hrmOffset];
     hrmOffset++;
     let y = E.clip(170 - (a*2),100,230);
-    g.setColor(g.theme.fg).drawLine(lastHrmPt[0],lastHrmPt[1],hrmOffset, y);
+    //g.setColor(g.theme.fg).drawLine(lastHrmPt[0],lastHrmPt[1],hrmOffset, y);
     lastHrmPt = [hrmOffset, y];
   }
 }
