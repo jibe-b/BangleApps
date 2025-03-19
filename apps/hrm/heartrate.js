@@ -52,6 +52,15 @@ var  mean = (array) => {
   return sum(array) / array.length;
 };
 
+var min = (array) => {
+  var sorted_array = hrHistory.sort((a, b) => a - b)
+  return sorted_array[0]
+}
+
+var max = (array) => {
+  var sorted_array = hrHistory.sort((a, b) => b - a)
+  return sorted_array[0]
+}
 
 /*
 var median = (array) => {
@@ -76,8 +85,8 @@ function updateHrm() {
   hrHistory = [50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150]
 
   var meanHrHistory = mean(hrHistory)
-  //var maxHrHistory = Math.max(...hrHistory)
-  //var  minHrHistory = Math.min(...hrHistory)
+  var maxHrHistory = max(...hrHistory)
+  var  minHrHistory = min(...hrHistory)
 
   var px = g.getWidth() / 2;
   g.setFontAlign(0, -1);
@@ -102,8 +111,8 @@ function updateHrm() {
   g.drawString(/*LANG*/"BPM", px + 25, py);
 
   g.drawString(meanHrHistory.toString(), g.getWidth()/2 - 50, g.getHeight() - 30)
-  //g.drawString(minHrHistory.toString(), g.getWidth()/2 - 25, g.getHeight() - 30)
-  //g.drawString(maxHrHistory.toString(), g.getWidth()/2 + 25, g.getHeight() - 30)
+  g.drawString(minHrHistory.toString(), g.getWidth()/2 - 25, g.getHeight() - 30)
+  g.drawString(maxHrHistory.toString(), g.getWidth()/2 + 25, g.getHeight() - 30)
 }
 
 var rawMax = 0;
