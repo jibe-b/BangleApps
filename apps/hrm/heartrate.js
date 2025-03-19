@@ -36,12 +36,13 @@ function onHRM(h) {
 }
 Bangle.on('HRM', onHRM);
 
-/*
-const mean = (array) => {
+
+var  mean = (array) => {
   return sum(array) / array.length;
 };
 
-const median = (array) => {
+/*
+var median = (array) => {
   array = array.sort();
   if (array.length % 2 === 0) { // array with even number elements
     return (array[array.length/2] + array[(array.length / 2) - 1]) / 2;
@@ -62,9 +63,9 @@ function updateHrm() {
 
   hrHistory = [50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150]
 
-  //const meanHrHistory = mean(hrHistory)
+  //var meanHrHistory = mean(hrHistory)
   var maxHrHistory = Math.max(...hrHistory)
-  //const minHrHistory = Math.min(...hrHistory)
+  //var  minHrHistory = Math.min(...hrHistory)
 
   var px = g.getWidth() / 2;
   g.setFontAlign(0, -1);
@@ -90,7 +91,7 @@ function updateHrm() {
 
   //g.drawString(meanHrHistory.toString(), g.getWidth()/2 - 50, g.getHeight() - 30)
   //g.drawString(minHrHistory.toString(), g.getWidth()/2 - 25, g.getHeight() - 30)
-  //g.drawString(maxHrHistory.toString(), g.getWidth()/2 + 25, g.getHeight() - 30)
+  g.drawString(maxHrHistory.toString(), g.getWidth()/2 + 25, g.getHeight() - 30)
 }
 
 var rawMax = 0;
