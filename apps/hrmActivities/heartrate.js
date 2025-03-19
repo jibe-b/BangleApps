@@ -52,8 +52,8 @@ var hrHistory = [];
 g.setColor(g.theme.fg);
 g.reset().setFont("6x8", 2).setFontAlign(0, -1);
 
-function onHRM(h) {
-  hrmInfo = h;
+function onHRM(heartRate) {
+  hrmInfo = heartRate;
 
   updateHrm();
 }
@@ -65,10 +65,9 @@ function updateHrm() {
   if (hrmInfo.bpm) {
     hrHistory = hrHistory.concat([hrmInfo.bpm])
   }
-  
-  
+
   var maxHistoryLength = 60 / 2
-  if (hrHistory.length > maxHistoryLength){
+  if (hrHistory.length > maxHistoryLength) {
     hrHistory = hrHistory.splice(-maxHistoryLength)
   }
 
@@ -104,14 +103,15 @@ function updateHrm() {
 
     g.drawString(maxHrHistory.toString(), g.getWidth() / 2 - 60, g.getHeight() - 40)
     g.drawString(minHrHistory.toString(), g.getWidth() / 2 - 60, g.getHeight() - 20)
-    
+
   }
 }
 
-var rawMax = 0;
-var scale = 2000;
 
-Bangle.on('HRM-raw', function (heartRate) {
+var onHRMraw = function (heartRate) {
+
+  var rawMax = 0;
+  var scale = 2000;
   hrmOffset++;
   if (hrmOffset > g.getWidth()) {
     let thousands = Math.round(rawMax / 1000) * 1000;
@@ -135,23 +135,21 @@ Bangle.on('HRM-raw', function (heartRate) {
     g.clearRect(0, 24, g.getWidth(), g.getHeight());
     updateHrm();
   }
-});
+}
 
+Bangle.on('HRM-raw', onHRMraw);
 
-g.clear();
 
 Bangle.setUI({
-  mode : "clock",
-  remove : function() {
-    // Called to unload all of the clock app
-    //if (drawTimeout) clearTimeout(drawTimeout);
-    //drawTimeout = undefined;
-    //delete Graphics.prototype.setFontAnton;
-    Bangle.removeListener('HRM', ()=>{})
-    Bangle.removeListener('HRM-raw', ()=>{})
-    g.clearRect(0, 24, g.getWidth(), g.getHeight());
+  mode: "clock",
+  remove: function () {
+    Bangle.removeListener('HRM', onHRM)
+    Bangle.removeListener('HRM-raw', onHRMraw)
+    g.clear();
     delete hrmInfo
-  }});
+  }
+});
+
 
 Bangle.loadWidgets();
 Bangle.drawWidgets();
