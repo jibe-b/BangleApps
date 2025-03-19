@@ -153,6 +153,7 @@ window.addEventListener('load', (event) => {
   */
   setSavedDeviceId("BANGLEJS2");
 
+  document.querySelector("#refreshButton").click()
 });
 
 window.addEventListener('load', (event) => {
