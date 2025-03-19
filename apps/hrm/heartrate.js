@@ -40,7 +40,7 @@ Bangle.on('HRM', onHRM);
 
 function updateHrm(){
   
-  hrHistory = [...hrHistory, parseInt(hrmInfo.bpm || 80)]
+  //hrHistory = [...hrHistory, parseInt(hrmInfo.bpm || 80)]
   //maxHrHistory = Math.max(hrHistory)
   //minHrHistory = Math.min(hrHistory)
 
