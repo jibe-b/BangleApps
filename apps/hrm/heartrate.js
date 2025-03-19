@@ -39,8 +39,6 @@ function updateHrm(){
   g.clearRect(0,0,g.getWidth(),g.getHeight());
   //g.setFont("6x8").drawString(/*LANG*/"Confidence "+(hrmInfo.confidence || "--")+"%", px, 70);
 
-  //updateScale();
-
   g.setFontAlign(0,0);
   var str = hrmInfo.bpm || "";
   var fontSize = 60;
@@ -50,12 +48,6 @@ function updateHrm(){
   //py += g.stringHeight(str)/2;
   g.setFont("6x8").setColor(g.theme.fg);
   g.drawString(/*LANG*/"BPM",px+25,py);
-}
-
-function updateScale(){
-    //g.setFontAlign(-1,-1);
-    //g.clearRect(0,100,200,200);
-    //g.setFont("6x8").drawString(scale, 2, 70);
 }
 
 var rawMax = 0;
@@ -70,7 +62,6 @@ Bangle.on('HRM-raw', function(v) {
     if (thousands > scale) scale = thousands;
 
     g.clearRect(0,0,g.getWidth(),g.getHeight());
-    //updateScale();
 
     hrmOffset=0;
     lastHrmPt = [-100,0];
@@ -94,6 +85,7 @@ Bangle.on('HRM-raw', function(v) {
 var counter = 5;
 function countDown() {
   if (counter) {
+    counter -= 1
     //g.drawString(counter--,g.getWidth()/2,g.getHeight()/2, true);
     setTimeout(countDown, 1000);
   }
