@@ -173,6 +173,7 @@ Bangle.setUI({
     //if (drawTimeout) clearTimeout(drawTimeout);
     //drawTimeout = undefined;
     //delete Graphics.prototype.setFontAnton;
+    g.clearRect(0, 24, g.getWidth(), g.getHeight());
   }});
 
 Bangle.loadWidgets();
