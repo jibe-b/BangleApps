@@ -17,9 +17,9 @@ let draw = function() {
   var timeStr = require("locale").time(date, 1); // Hour and minute
   g.setFontAlign(0, 0).setFont("Anton").drawString(timeStr, x, y);
   // Show date and day of week
-  var dateStr = require("locale").date(date, 0).toUpperCase()+"\n"+
-                require("locale").dow(date, 0).toUpperCase();
-  g.setFontAlign(0, 0).setFont("6x8", 2).drawString(dateStr, x, y+48);
+  //var dateStr = require("locale").date(date, 0).toUpperCase()+"\n"+
+  //              require("locale").dow(date, 0).toUpperCase();
+  //g.setFontAlign(0, 0).setFont("6x8", 2).drawString(dateStr, x, y+48);
 
   // queue next draw
   if (drawTimeout) clearTimeout(drawTimeout);
