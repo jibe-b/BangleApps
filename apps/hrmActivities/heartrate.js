@@ -174,6 +174,7 @@ Bangle.setUI({
     //drawTimeout = undefined;
     //delete Graphics.prototype.setFontAnton;
     g.clearRect(0, 24, g.getWidth(), g.getHeight());
+    delete hrmInfo
   }});
 
 Bangle.loadWidgets();
@@ -187,6 +188,8 @@ countDown();
 //var wasHigh = 0, wasLow = 0;
 //var lastHigh = getTime();
 //var hrmList = [];
+
+/*
 var hrmInfo;
 
 function readHRM() {
@@ -204,3 +207,5 @@ function readHRM() {
     lastHrmPt = [hrmOffset, y];
   }
 }
+
+*/
