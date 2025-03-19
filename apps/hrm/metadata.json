@@ -1,7 +1,7 @@
 {
   "id": "hrm",
   "name": "Heart Rate Monitor",
-  "version": "10.26",
+  "version": "10.27",
   "description": "Measure your heart rate and see live sensor data",
   "icon": "heartrate.png",
   "tags": "health",
