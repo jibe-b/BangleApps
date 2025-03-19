@@ -36,24 +36,24 @@ Bangle.on('HRM', onHRM);
 function updateHrm(){
   var px = g.getWidth()/2;
   g.setFontAlign(0,-1);
-  g.clearRect(0,24,g.getWidth(),80);
+  g.clearRect(0,0,g.getWidth(),g.getHeight());
   //g.setFont("6x8").drawString(/*LANG*/"Confidence "+(hrmInfo.confidence || "--")+"%", px, 70);
 
-  updateScale();
+  //updateScale();
 
   g.setFontAlign(0,0);
   var str = hrmInfo.bpm || "";
   var py = 80;//g.getHeight()/2;
   g.setFontVector(60).setColor(hrmInfo.confidence > 50 ? g.theme.fg : "#888").drawString(str,px,py);
   px += g.stringWidth(str)/2;
-  py += g.stringHeight(str)/2;
+  //py += g.stringHeight(str)/2;
   g.setFont("6x8").setColor(g.theme.fg);
   g.drawString(/*LANG*/"BPM",px+25,py);
 }
 
 function updateScale(){
-    g.setFontAlign(-1,-1);
-    g.clearRect(0,100,200,200);
+    //g.setFontAlign(-1,-1);
+    //g.clearRect(0,100,200,200);
     //g.setFont("6x8").drawString(scale, 2, 70);
 }
 
@@ -69,7 +69,7 @@ Bangle.on('HRM-raw', function(v) {
     if (thousands > scale) scale = thousands;
 
     g.clearRect(0,0,g.getWidth(),g.getHeight());
-    updateScale();
+    //updateScale();
 
     hrmOffset=0;
     lastHrmPt = [-100,0];
