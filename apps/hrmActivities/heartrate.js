@@ -228,8 +228,18 @@ function onHRM(heartRate) {
 
 Bangle.on('HRM', onHRM);
 
+const maxHistoryLength = 60 / 2
+const storeHrHistory = (hr) => {
+  if (hrHistory.length > maxHistoryLength) {
+    hrHistory = hrHistory.splice(-maxHistoryLength)
+  }
+  hrHistory = hrHistory.concat([hr])
+}
+
 var timeSincePushToBaserow = 0
 function updateHrm() {
+
+  if (hrmInfo.bpm) storeHrHistory(hrmInfo.bpm)
 
   if (timeSincePushToBaserow < 10) { timeSincePushToBaserow += 1 }
   else {
@@ -243,10 +253,9 @@ function updateHrm() {
       "Content-Type": "application/json"
     }
     const body = {
-      "field_3790524":Date.now().toString(),
+      "field_3790524": Date.now().toString(),
       "field_3790525": "[82,83,84]"
     }
-    if (Bangle.http){
     Bangle.http(
       // base_url + 'tiptop_from_bangleJS', {
       baserow_url, {
@@ -255,27 +264,15 @@ function updateHrm() {
       body
     }).then(response => {
       g.clear()
-      g.drawString("done!", 10, 10, true)
+      g.drawString("done!", 50, 50, true)
     }).catch(error => {
       g.clear()
       g.drawString("FAIIIIIIILED!", 10, 10, true)
     });
-  }
-  else{
-    g.clear()
-    g.drawString("no http", 10, 10, true)
-  }
 
   }
 
-  if (hrmInfo.bpm) {
-    hrHistory = hrHistory.concat([hrmInfo.bpm])
-  }
 
-  var maxHistoryLength = 60 / 2
-  if (hrHistory.length > maxHistoryLength) {
-    hrHistory = hrHistory.splice(-maxHistoryLength)
-  }
 
   var px = g.getWidth() / 2;
   g.setFontAlign(0, -1);
