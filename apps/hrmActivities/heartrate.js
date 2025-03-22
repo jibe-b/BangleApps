@@ -228,7 +228,7 @@ function onHRM(heartRate) {
 
 Bangle.on('HRM', onHRM);
 
-const maxHistoryLength = 60 
+const maxHistoryLength = 60 / 2; 
 const storeHrHistory = (hr) => {
   if (hrHistory.length > maxHistoryLength - 1) {
     hrHistory = hrHistory.splice(-maxHistoryLength)
