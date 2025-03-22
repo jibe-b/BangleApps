@@ -231,7 +231,7 @@ Bangle.on('HRM', onHRM);
 const maxHistoryLength = 60 / 2;
 const storeHrHistory = (hr) => {
   if (hrHistory.length >= maxHistoryLength) hrHistory.shift() //.splice(-(maxHistoryLength - 1))
-  hrHistory = hrHistory.concat([hr])   
+  hrHistory = hrHistory.concat([hr])
 }
 
 const table_id = "481734"
@@ -250,7 +250,7 @@ function updateHrm() {
   else {
     timeSincePushToBaserow = 0;
     const body = {
-      "field_3790524": Date.now().toString(), //Math.trunc(Date.now()*1000)
+      "field_3790524": Math.trunc(Date.now()*1000).toString(),
       "field_3790525": JSON.stringify(hrHistory)
     }
     Bangle.http(
