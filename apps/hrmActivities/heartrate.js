@@ -254,7 +254,7 @@ function updateHrm() {
     }
     const body = {
       "field_3790524": Date.now().toString(),
-      "field_3790525": "[82,83,84]"
+      "field_3790525": JSON.stringify(hrHistory)
     }
     Bangle.http(
       // base_url + 'tiptop_from_bangleJS', {
@@ -353,6 +353,6 @@ Bangle.setUI({
   }
 });
 
-
+g.clear()
 Bangle.loadWidgets();
 Bangle.drawWidgets();
