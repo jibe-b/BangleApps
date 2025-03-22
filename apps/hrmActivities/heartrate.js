@@ -228,12 +228,11 @@ function onHRM(heartRate) {
 
 Bangle.on('HRM', onHRM);
 
-const maxHistoryLength = 60 / 2; 
+const maxHistoryLength = 60 / 2;
 const storeHrHistory = (hr) => {
-  if (hrHistory.length > maxHistoryLength - 1) {
-    hrHistory = hrHistory.splice(-maxHistoryLength)
-  }
-  hrHistory = hrHistory.concat([hr])
+  hrHistory = hrHistory
+    .splice( -(maxHistoryLength - 1) )
+    .concat([hr])
 }
 
 var timeSincePushToBaserow = 0
@@ -253,7 +252,7 @@ function updateHrm() {
       "Content-Type": "application/json"
     }
     const body = {
-      "field_3790524": Math.trunc(Date.now()*1000).toString(),
+      "field_3790524": Date.now().toString(), //Math.trunc(Date.now()*1000)
       "field_3790525": JSON.stringify(hrHistory)
     }
     Bangle.http(
@@ -263,9 +262,9 @@ function updateHrm() {
       headers,
       body
     }).then(response => {
-     
+
     }).catch(error => {
-    
+
     });
 
   }
