@@ -225,6 +225,7 @@ var timeSincePushToBaserow = 0
 Bangle.on('HRMm', onHRM);
   if (timeSincePushToBaserow < 60) timeSincePushToBaserow += 1
   else {
+    timeSincePushToBaserow = 0;
     //const base_url = "https://trigger.macrodroid.com/369536eb-701d-43c7-ba63-b31106eca988/notification-recue?text="
 
     const table_id = "481734"
