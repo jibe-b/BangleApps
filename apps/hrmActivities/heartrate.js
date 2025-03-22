@@ -244,26 +244,27 @@ const headers = {
 var timeSincePushToBaserow = 0
 function updateHrm() {
 
-  if (hrmInfo.bpm) storeHrHistory(hrmInfo.bpm)
+  if (hrmInfo.bpm) {
+    storeHrHistory(hrmInfo.bpm)
+    if (timeSincePushToBaserow < maxHistoryLength) { timeSincePushToBaserow += 1 }
+    else {
+      timeSincePushToBaserow = 0;
+      const body = {
+        "field_3790524": Math.trunc(Date.now() * 1000).toString(),
+        "field_3790525": JSON.stringify(hrHistory)
+      }
+      Bangle.http(
+        baserow_url, {
+        method: 'POST',
+        headers,
+        body
+      }).then(response => {
 
-  if (timeSincePushToBaserow < maxHistoryLength) { timeSincePushToBaserow += 1 }
-  else {
-    timeSincePushToBaserow = 0;
-    const body = {
-      "field_3790524": Math.trunc(Date.now()*1000).toString(),
-      "field_3790525": JSON.stringify(hrHistory)
+      }).catch(error => {
+
+      });
+
     }
-    Bangle.http(
-      baserow_url, {
-      method: 'POST',
-      headers,
-      body
-    }).then(response => {
-
-    }).catch(error => {
-
-    });
-
   }
 
 
@@ -302,8 +303,6 @@ function updateHrm() {
 
     g.drawString(maxHrHistory.toString(), g.getWidth() / 2 - 60, g.getHeight() - 40)
     g.drawString(minHrHistory.toString(), g.getWidth() / 2 + 60, g.getHeight() - 20)
-
-    g.drawString(timeSincePushToBaserow.toString(), g.getWidth() / 2 - 60, g.getHeight() - 20)
 
   }
 }
