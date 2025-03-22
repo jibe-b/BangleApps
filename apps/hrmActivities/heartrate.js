@@ -49,10 +49,22 @@ Bangle.on('touch', (button, xy) => {
   if (0 <= xy.x && xy.x < 175 / 3) {
     const base_url = "https://trigger.macrodroid.com/369536eb-701d-43c7-ba63-b31106eca988/notification-recue?text="
 
+    const table_id = "481734"
+    const baserow_url = `https://api.baserow.io/api/database/rows/table/${table_id}/`
+    const headers = {
+      "Authorization": "Token Qf6SYdzFNmP7oDtWJ6iWTcb75dcZkuzD",
+      "Content-Type": "application/json"
+    }
+    const body = {
+      "field_3790524": "0",
+      "field_3790525": "[82,83,84]"
+    }
     if (Bangle.http) {
       Bangle.http(
         base_url + 'tiptop_from_bangleJS', {
-          method: 'GET',
+          method: 'POST',
+          headers,
+          body
       }).then(response => {
         console.log("Response received:", response);
       }).catch(error => {
