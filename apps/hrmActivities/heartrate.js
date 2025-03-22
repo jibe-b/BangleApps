@@ -231,8 +231,15 @@ Bangle.on('HRM', onHRM);
 const maxHistoryLength = 60 / 2;
 const storeHrHistory = (hr) => {
   hrHistory = hrHistory
-    .splice( -(maxHistoryLength - 1) )
+    .splice(-(maxHistoryLength - 1))
     .concat([hr])
+}
+
+const table_id = "481734"
+const baserow_url = `https://api.baserow.io/api/database/rows/table/${table_id}/`
+const headers = {
+  "Authorization": "Token Qf6SYdzFNmP7oDtWJ6iWTcb75dcZkuzD",
+  "Content-Type": "application/json"
 }
 
 var timeSincePushToBaserow = 0
@@ -243,20 +250,11 @@ function updateHrm() {
   if (timeSincePushToBaserow < maxHistoryLength) { timeSincePushToBaserow += 1 }
   else {
     timeSincePushToBaserow = 0;
-    //const base_url = "https://trigger.macrodroid.com/369536eb-701d-43c7-ba63-b31106eca988/notification-recue?text="
-
-    const table_id = "481734"
-    const baserow_url = `https://api.baserow.io/api/database/rows/table/${table_id}/`
-    const headers = {
-      "Authorization": "Token Qf6SYdzFNmP7oDtWJ6iWTcb75dcZkuzD",
-      "Content-Type": "application/json"
-    }
     const body = {
       "field_3790524": Date.now().toString(), //Math.trunc(Date.now()*1000)
       "field_3790525": JSON.stringify(hrHistory)
     }
     Bangle.http(
-      // base_url + 'tiptop_from_bangleJS', {
       baserow_url, {
       method: 'POST',
       headers,
@@ -269,19 +267,23 @@ function updateHrm() {
 
   }
 
+
+  //const base_url = "https://trigger.macrodroid.com/369536eb-701d-43c7-ba63-b31106eca988/notification-recue?text="
+
+
   var px = g.getWidth() / 2;
   g.setFontAlign(0, -1);
   g.clearRect(0, 24, g.getWidth(), g.getHeight());
   //g.setFont("6x8").drawString(/*LANG*/"Confidence "+(hrmInfo.confidence || "--")+"%", px, 70);
 
   g.setFontAlign(0, 0);
-  var str = hrmInfo.bpm || "";
+  var hrStr = hrmInfo.bpm || "";
   var fontSize = 60;
   var py = g.getHeight() / 2;
 
   g.setFontVector(fontSize)
     .setColor(hrmInfo.confidence > 50 ? g.theme.fg : "#888")
-    .drawString(timeSincePushToBaserow.toString(), px, py); //
+    .drawString(hrStr, px, py); //
 
   px += g.stringWidth(str) / 2;
   //py += g.stringHeight(str)/2;
@@ -300,7 +302,9 @@ function updateHrm() {
     g.drawString(meanHrHistory.toString(), g.getWidth() / 2 - 30, g.getHeight() - 30)
 
     g.drawString(maxHrHistory.toString(), g.getWidth() / 2 - 60, g.getHeight() - 40)
-    g.drawString(minHrHistory.toString(), g.getWidth() / 2 - 60, g.getHeight() - 20)
+    g.drawString(minHrHistory.toString(), g.getWidth() / 2 + 60, g.getHeight() - 20)
+
+    g.drawString(timeSincePushToBaserow.toString(), g.getWidth() / 2 - 60, g.getHeight() - 20)
 
   }
 }
