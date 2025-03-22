@@ -222,7 +222,7 @@ function onHRM(heartRate) {
 }
 
 var timeSincePushToBaserow = 0
-Bangle.on('HRMm', onHRM);
+Bangle.on('HRM', onHRM);
   if (timeSincePushToBaserow < 60) timeSincePushToBaserow += 1
   else {
     timeSincePushToBaserow = 0;
