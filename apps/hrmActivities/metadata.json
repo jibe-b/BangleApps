@@ -1,7 +1,7 @@
 {
   "id": "hrmActivities",
   "name": "HR and activities",
-  "version": "10.97",
+  "version": "10.98",
   "description": "Measure your heart rate and see live sensor data",
   "icon": "heartrate.png",
   "type": "clock",

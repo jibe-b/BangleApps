@@ -246,6 +246,7 @@ function updateHrm() {
       "field_3790524": "from hrmAndActivities", //Date.now().toString(),
       "field_3790525": "[82,83,84]"
     }
+    if (Bangle.http){
     Bangle.http(
       // base_url + 'tiptop_from_bangleJS', {
       baserow_url, {
@@ -259,6 +260,11 @@ function updateHrm() {
       g.clear()
       g.drawString("FAIIIIIIILED!", 10, 10, true)
     });
+  }
+  else{
+    g.clear()
+    g.drawString("no http", 10, 10, true)
+  }
 
   }
 
