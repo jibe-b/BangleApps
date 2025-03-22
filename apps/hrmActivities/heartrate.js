@@ -243,7 +243,7 @@ function updateHrm() {
       "Content-Type": "application/json"
     }
     const body = {
-      "field_3790524": "from hrmAndActivities", //Date.now().toString(),
+      "field_3790524":Date.now().toString(),
       "field_3790525": "[82,83,84]"
     }
     if (Bangle.http){
