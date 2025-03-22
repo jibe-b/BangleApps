@@ -48,14 +48,20 @@ Bangle.on('touch', (button, xy) => {
   let app = ''; 
   if (0 <= xy.x && xy.x < 175 / 3) {
     const base_url = "https://trigger.macrodroid.com/369536eb-701d-43c7-ba63-b31106eca988/notification-recue?text="
-    Bangle.http(
-      base_url + 'tiptop_from_bangleJS', {
-        method: 'GET',
-    }).then(response => {
-      console.log("Response received:", response);
-    }).catch(error => {
-      console.error("Error sending data:", error);
-    });
+
+    if (Bangle.http) {
+      Bangle.http(
+        base_url + 'tiptop_from_bangleJS', {
+          method: 'GET',
+      }).then(response => {
+        console.log("Response received:", response);
+      }).catch(error => {
+        console.error("Error sending data:", error);
+      });
+    } else {
+      g.clear();
+      g.drawString("no http", 10,10, true)
+    }
 
     app = 'A';
   }
@@ -231,7 +237,7 @@ function onHRM(heartRate) {
   updateHrm();
 }
 
-Bangle.on('HRM', onHRM);
+Bangle.on('HRMm', onHRM);
 
 function updateHrm() {
 
