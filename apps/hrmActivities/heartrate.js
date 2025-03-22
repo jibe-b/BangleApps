@@ -250,7 +250,7 @@ function updateHrm() {
     else {
       timeSincePushToBaserow = 0;
       const body = {
-        "field_3790524": Math.trunc(Date.now() * 1000).toString(),
+        "field_3790524": (Date.now() * 1000).toString(),
         "field_3790525": JSON.stringify(hrHistory)
       }
       Bangle.http(
