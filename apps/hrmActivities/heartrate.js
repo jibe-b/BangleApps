@@ -230,9 +230,8 @@ Bangle.on('HRM', onHRM);
 
 const maxHistoryLength = 60 / 2;
 const storeHrHistory = (hr) => {
-  hrHistory = hrHistory
-    .splice(-(maxHistoryLength - 1))
-    .concat([hr])
+  if (hrHistory.length >= maxHistoryLength) hrHistory.shift() //.splice(-(maxHistoryLength - 1))
+  hrHistory = hrHistory.concat([hr])   
 }
 
 const table_id = "481734"
