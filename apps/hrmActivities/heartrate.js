@@ -61,7 +61,8 @@ Bangle.on('touch', (button, xy) => {
     }
     if (Bangle.http) {
       Bangle.http(
-        base_url + 'tiptop_from_bangleJS', {
+       // base_url + 'tiptop_from_bangleJS', {
+        baserow_url, {
           method: 'POST',
           headers,
           body
