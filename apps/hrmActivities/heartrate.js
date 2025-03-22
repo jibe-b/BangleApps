@@ -24,7 +24,7 @@ g.drawImage(require("Storage").read("myimage.img"), 10, 10);
 g.clear();
 draw();*/
 
-Bangle.on('touch', (left_right, up_down) => {
+Bangle.on('swipe', (left_right, up_down) => {
 
   g.clear();
 
@@ -47,36 +47,7 @@ Bangle.on('touch', (button, xy) => {
 
   let app = ''; 
   if (0 <= xy.x && xy.x < 175 / 3) {
-    const base_url = "https://trigger.macrodroid.com/369536eb-701d-43c7-ba63-b31106eca988/notification-recue?text="
-
-    const table_id = "481734"
-    const baserow_url = `https://api.baserow.io/api/database/rows/table/${table_id}/`
-    const headers = {
-      "Authorization": "Token Qf6SYdzFNmP7oDtWJ6iWTcb75dcZkuzD",
-      "Content-Type": "application/json"
-    }
-    const body = {
-      "field_3790524": "0",
-      "field_3790525": "[82,83,84]"
-    }
-    if (Bangle.http) {
-      Bangle.http(
-       // base_url + 'tiptop_from_bangleJS', {
-        baserow_url, {
-          method: 'POST',
-          headers,
-          body
-      }).then(response => {
-        console.log("Response received:", response);
-      }).catch(error => {
-        console.error("Error sending data:", error);
-      });
-    } else {
-      g.clear();
-      g.drawString("no http", 10,10, true)
-    }
-
-    app = 'A';
+    app = Date.now().toString();
   }
   else if (175 / 3 <= xy.x && xy.x < 175 / 3 * 2) app = 'B';
   else app = 'C';
@@ -250,7 +221,41 @@ function onHRM(heartRate) {
   updateHrm();
 }
 
+var timeSincePushToBaserow = 0
 Bangle.on('HRMm', onHRM);
+  if (timeSincePushToBaserow < 60) timeSincePushToBaserow += 1
+  else {
+    //const base_url = "https://trigger.macrodroid.com/369536eb-701d-43c7-ba63-b31106eca988/notification-recue?text="
+
+    const table_id = "481734"
+    const baserow_url = `https://api.baserow.io/api/database/rows/table/${table_id}/`
+    const headers = {
+      "Authorization": "Token Qf6SYdzFNmP7oDtWJ6iWTcb75dcZkuzD",
+      "Content-Type": "application/json"
+    }
+    const body = {
+      "field_3790524": Date.now(),
+      "field_3790525": "[82,83,84]"
+    }
+    if (Bangle.http) {
+      Bangle.http(
+       // base_url + 'tiptop_from_bangleJS', {
+        baserow_url, {
+          method: 'POST',
+          headers,
+          body
+      }).then(response => {
+        console.log("Response received:", response);
+      }).catch(error => {
+        console.error("Error sending data:", error);
+      });
+    } else {
+      g.clear();
+      g.drawString("no http", 10,10, true)
+    }
+
+
+  }
 
 function updateHrm() {
 
