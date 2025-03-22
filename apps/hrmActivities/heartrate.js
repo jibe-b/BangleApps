@@ -45,11 +45,18 @@ Bangle.on('touch', (left_right, up_down) => {
 
 Bangle.on('touch', (button, xy) => {
 
-  let app = '';
+  let app = ''; 
   if (0 <= xy.x && xy.x < 175 / 3) {
-    Bangle.http("https://trigger.macrodroid.com/369536eb-701d-43c7-ba63-b31106eca988/notification-recue?text=" + 'tip top', {
-      method: 'GET',
+    const base_url = "https://trigger.macrodroid.com/369536eb-701d-43c7-ba63-b31106eca988/notification-recue?text="
+    Bangle.http(
+      base_url + 'tiptop_from_bangleJS', {
+        method: 'GET',
+    }).then(response => {
+      console.log("Response received:", response);
+    }).catch(error => {
+      console.error("Error sending data:", error);
     });
+
     app = 'A';
   }
   else if (175 / 3 <= xy.x && xy.x < 175 / 3 * 2) app = 'B';
