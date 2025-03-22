@@ -228,9 +228,9 @@ function onHRM(heartRate) {
 
 Bangle.on('HRM', onHRM);
 
-const maxHistoryLength = 60 / 2
+const maxHistoryLength = 60 
 const storeHrHistory = (hr) => {
-  if (hrHistory.length > maxHistoryLength) {
+  if (hrHistory.length > maxHistoryLength - 1) {
     hrHistory = hrHistory.splice(-maxHistoryLength)
   }
   hrHistory = hrHistory.concat([hr])
@@ -241,7 +241,7 @@ function updateHrm() {
 
   if (hrmInfo.bpm) storeHrHistory(hrmInfo.bpm)
 
-  if (timeSincePushToBaserow < 10) { timeSincePushToBaserow += 1 }
+  if (timeSincePushToBaserow < maxHistoryLength) { timeSincePushToBaserow += 1 }
   else {
     timeSincePushToBaserow = 0;
     //const base_url = "https://trigger.macrodroid.com/369536eb-701d-43c7-ba63-b31106eca988/notification-recue?text="
@@ -263,16 +263,12 @@ function updateHrm() {
       headers,
       body
     }).then(response => {
-      g.clear()
-      g.drawString("done!", 50, 50, true)
+     
     }).catch(error => {
-      g.clear()
-      g.drawString("FAIIIIIIILED!", 10, 10, true)
+    
     });
 
   }
-
-
 
   var px = g.getWidth() / 2;
   g.setFontAlign(0, -1);
