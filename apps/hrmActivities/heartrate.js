@@ -253,7 +253,7 @@ function updateHrm() {
       "Content-Type": "application/json"
     }
     const body = {
-      "field_3790524": Date.now().toString(),
+      "field_3790524": Math.trunc(Date.now()*1000).toString(),
       "field_3790525": JSON.stringify(hrHistory)
     }
     Bangle.http(
