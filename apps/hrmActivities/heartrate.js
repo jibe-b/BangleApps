@@ -1,3 +1,169 @@
+const HEIGHT = g.getHeight();
+const WIDTH = g.getWidth();
+
+/*g.setFontVector(20);
+
+var draw = () => {
+  g.drawString("80", 100,100,true);
+  g.fillCircle(g.getWidth()/2,g.getHeight()/2,5);
+
+  var xoffset = 60;
+  for(x=1;x<3;x++)   {
+    g.drawLine(x*xoffset,0,x*xoffset,g.getHeight());
+
+          g.drawLine(0,x*xoffset,g.getWidth(),x*xoffset)           ;
+
+                     }
+/*
+// or draw an image directly from Storage
+g.drawImage(require("Storage").read("myimage.img"), 10, 10);
+
+*/
+/* 
+};
+g.clear();
+draw();*/
+
+Bangle.on('touch', (left_right, up_down) => {
+
+  g.clear();
+
+  g.setFontAlign(0, 0);
+
+  g.setFontVector(40);
+
+  g.drawLine(0, 175 / 3, 175, 175 / 3);
+  g.drawLine(0, 175 / 3 * 2, 175, 175 / 3 * 2);
+  g.drawLine(175 / 3, 0, 175 / 3, 175);
+  g.drawLine(175 / 3 * 2, 0, 175 / 3 * 2, 175);
+
+  g.drawString('a', 20, 10);
+  g.drawString('b', 20 + 175 / 3, 10);
+  g.drawString('c', 20 + 2 * 175 / 3, 10);
+
+});
+
+Bangle.on('touch', (button, xy) => {
+
+  let app = '';
+  if (0 <= xy.x && xy.x < 175 / 3) {
+    Bangle.http("https://trigger.macrodroid.com/369536eb-701d-43c7-ba63-b31106eca988/notification-recue?text=" + 'tip top', {
+      method: 'GET',
+    });
+    app = 'A';
+  }
+  else if (175 / 3 <= xy.x && xy.x < 175 / 3 * 2) app = 'B';
+  else app = 'C';
+
+  g.drawString(app, WIDTH / 2, HEIGHT / 2, true);
+
+});
+
+Bangle.on('HRM-ra', (value) => {
+  g.clear();
+  g.setFontVector(40);
+  g.drawString(value);
+  console.log(value);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+
+var getNewHR = (lastHr, time)=> {
+  var increment = (-0.5 + Math.random()) * 10 + (-0.5 + Math.sin(time/50) ) * 10  + (-0.5 + Math.sin(time/10) ) * 20;
+  return Math.round(lastHr + increment);
+};
+
+var build_initial_hrHistory = (lastHr) => {
+ var res = [];
+  for(let i=0;i<60;i++){
+    var hr = getNewHR(lastHr, i);
+    res.push(hr);
+    lastHr = hr;
+ }
+  return res;
+};
+
+var lastHr = 100;
+var hrHistory = build_initial_hrHistory(lastHr);
+var new_hr;
+var actualTime = 0;
+
+var fontSize = 30;
+g.setFont("6x8");
+g.setColor(g.theme.fg);
+g.setFontVector(fontSize);
+g.setFontAlign(0,0);
+
+var max_length = 60;
+var diameter = 1;
+var min_hr = 50;
+
+
+
+// Draw on every second if unlocked or charging, minute otherwise, start at with seconds on load
+var drawTimeout;
+var drawInterval = 1000;
+
+// schedule a draw for the next interval
+function queueDraw() {
+  if (drawTimeout) clearTimeout(drawTimeout);
+  drawTimeout = setTimeout(function() {
+    drawTimeout = undefined;
+    draw();
+  }, drawInterval - (Date.now() % drawInterval));
+}
+
+function draw() {
+
+  actualTime += 1;
+  new_hr = getNewHR(lastHr, actualTime);
+  hrHistory.push(new_hr);
+
+  if (hrHistory.length > max_length) hrHistory = hrHistory.splice(-max_length);
+
+  g.clear();
+  for (let i=0;i<hrHistory.length;i++){
+    var time = i;
+    var hr = hrHistory[i];
+
+    
+    g.drawString(new_hr, g.getWidth()/2, 24 + fontSize/2, true);
+
+    
+    g.fillCircle(time * g.getWidth()/60, g.getHeight() + (min_hr - hr) * 1.5 , diameter);
+    
+    queueDraw();
+  }
+}
+
+g.clear();
+draw();
+
+*/
+
+
+
+
 if (process.env.HWVERSION == 1) {
   Bangle.setLCDPower(1);
   Bangle.setLCDTimeout(0);
