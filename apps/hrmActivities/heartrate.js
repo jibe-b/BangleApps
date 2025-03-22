@@ -225,8 +225,12 @@ function onHRM(heartRate) {
   updateHrm();
 }
 
-var timeSincePushToBaserow = 0
+
 Bangle.on('HRM', onHRM);
+
+var timeSincePushToBaserow = 0
+function updateHrm() {
+
   if (timeSincePushToBaserow < 10) timeSincePushToBaserow += 1
   else {
     timeSincePushToBaserow = 0;
@@ -261,8 +265,6 @@ Bangle.on('HRM', onHRM);
 
 
   }
-
-function updateHrm() {
 
   if (hrmInfo.bpm) {
     hrHistory = hrHistory.concat([hrmInfo.bpm])
