@@ -253,9 +253,11 @@ function updateHrm() {
       headers,
       body
     }).then(response => {
-      console.log("Response received:", response);
+      g.clear()
+      g.drawString("done!", 10, 10, true)
     }).catch(error => {
-      console.error("Error sending data:", error);
+      g.clear()
+      g.drawString("FAIIIIIIILED!", 10, 10, true)
     });
 
   }
