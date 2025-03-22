@@ -49,7 +49,7 @@ Bangle.on('swipe', (left_right, up_down) => {
 
 Bangle.on('touch', (button, xy) => {
 
-  let app = ''; 
+  let app = '';
   if (0 <= xy.x && xy.x < 175 / 3) {
     app = Date.now().toString();
   }
@@ -231,7 +231,7 @@ Bangle.on('HRM', onHRM);
 var timeSincePushToBaserow = 0
 function updateHrm() {
 
-  if (timeSincePushToBaserow < 10) timeSincePushToBaserow += 1
+  if (timeSincePushToBaserow < 10) { timeSincePushToBaserow += 1 }
   else {
     timeSincePushToBaserow = 0;
     //const base_url = "https://trigger.macrodroid.com/369536eb-701d-43c7-ba63-b31106eca988/notification-recue?text="
@@ -243,26 +243,20 @@ function updateHrm() {
       "Content-Type": "application/json"
     }
     const body = {
-      "field_3790524": Date.now().toString(),
+      "field_3790524": "from hrmAndActivities", //Date.now().toString(),
       "field_3790525": "[82,83,84]"
     }
-    if (Bangle.http) {
-      Bangle.http(
-       // base_url + 'tiptop_from_bangleJS', {
-        baserow_url, {
-          method: 'POST',
-          headers,
-          body
-      }).then(response => {
-        console.log("Response received:", response);
-      }).catch(error => {
-        console.error("Error sending data:", error);
-      });
-    } else {
-      g.clear();
-      g.drawString("no http", 10,10, true)
-    }
-
+    Bangle.http(
+      // base_url + 'tiptop_from_bangleJS', {
+      baserow_url, {
+      method: 'POST',
+      headers,
+      body
+    }).then(response => {
+      console.log("Response received:", response);
+    }).catch(error => {
+      console.error("Error sending data:", error);
+    });
 
   }
 
@@ -287,7 +281,7 @@ function updateHrm() {
 
   g.setFontVector(fontSize)
     .setColor(hrmInfo.confidence > 50 ? g.theme.fg : "#888")
-    .drawString(str, px, py);
+    .drawString(timeSincePushToBaserow.toString(), px, py); //
 
   px += g.stringWidth(str) / 2;
   //py += g.stringHeight(str)/2;
