@@ -1,3 +1,7 @@
+const Storage = require("Storage")
+
+
+
 const HEIGHT = g.getHeight();
 const WIDTH = g.getWidth();
 
@@ -223,7 +227,7 @@ function onHRM(heartRate) {
 
 var timeSincePushToBaserow = 0
 Bangle.on('HRM', onHRM);
-  if (timeSincePushToBaserow < 60) timeSincePushToBaserow += 1
+  if (timeSincePushToBaserow < 10) timeSincePushToBaserow += 1
   else {
     timeSincePushToBaserow = 0;
     //const base_url = "https://trigger.macrodroid.com/369536eb-701d-43c7-ba63-b31106eca988/notification-recue?text="
@@ -235,7 +239,7 @@ Bangle.on('HRM', onHRM);
       "Content-Type": "application/json"
     }
     const body = {
-      "field_3790524": Date.now(),
+      "field_3790524": Date.now().toString(),
       "field_3790525": "[82,83,84]"
     }
     if (Bangle.http) {
